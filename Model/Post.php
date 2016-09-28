@@ -60,4 +60,6 @@ class Post {
     function setUser($user) {
         $this->user = $user;
     }
+    
+   
 }
