@@ -19,16 +19,14 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 class User {
     
-    /** @Id @Column(type="integer") @GeneratedValue **/
+
     protected $id;
-    /** @Column(type="string") **/
+
     protected $username;
-    /** @Column(type="string") **/
+
     protected $email;
-    /**
-     * @OneToMany(targetEntity="Post", mappedBy="posts")
-     */
-    protected $posts;
+    
+	protected $posts;
     
     function __construct() {
         $this->posts = new ArrayCollection();

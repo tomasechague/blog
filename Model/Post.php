@@ -13,22 +13,16 @@
  */
 
 
-/**
- * @Entity @Table(name="posts")
- **/
 class Post {
-    /** @Id @Column(type="integer") @GeneratedValue **/
+
     protected $id;
-    /** @Column(type="string") **/
+
     protected $title;
-    /** @Column(type="string") **/
+
     protected $content;
-    /** @Column(type="datetime") **/
+
     protected $createAt;
     
-    /**
-     * @ManyToOne(targetEntity="User", inversedBy="posts")
-     **/
     protected $user;
     
     function getId() {
@@ -66,6 +60,4 @@ class Post {
     function setUser($user) {
         $this->user = $user;
     }
-
-
 }
