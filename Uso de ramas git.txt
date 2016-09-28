@@ -20,3 +20,12 @@
 3.2 No trae cambios
 	git merge nombre_rama
 	git push origin master
+
+
+
+Otros comandos:
+
+git push origin nombre_rama (publica rama en origin)
+git branch -l (lista ramas locales)
+git branch -r (lista ramas remotas)
+git branch -a (lista ramas locales y remotas)
