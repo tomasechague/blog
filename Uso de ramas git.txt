@@ -29,3 +29,8 @@ git push origin nombre_rama (publica rama en origin)
 git branch -l (lista ramas locales)
 git branch -r (lista ramas remotas)
 git branch -a (lista ramas locales y remotas)
+
+//borrado de ramas
+git branch -d nombre_rama (borra rama local, borrar desde otra rama)
+git branch -D nombre_rama (fuerza borrado rama local, borrar desde otra rama)
+git push origin :nombre_rama (borra rama remota)
