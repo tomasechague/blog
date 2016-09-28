@@ -1,0 +1,22 @@
+1:Antes de arrancar desarrollo, actualizar rama master
+ 	git checkout master
+	git pull origin master
+	git checkout -b nombre_rama
+
+2: Al finalizar desarrollo de rama comitear cambios en rama
+	git add .
+	git commit -m "mensaje"
+
+3: Antes de subir cambios actualizar rama master local
+	git checkout master
+	git pull origin master
+
+	3.1 Si trae cambios, actualizar rama de desarrollo y luego actualizar master
+
+		git checkout nombre_rama
+		git rebase master
+		Vuelve a 3
+		
+3.2 No trae cambios
+	git merge nombre_rama
+	git push origin master
