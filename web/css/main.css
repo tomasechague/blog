@@ -1,0 +1,19 @@
+body{
+    
+    font-family: sans-serif;
+}
+#header, footer{
+    background-color: #3384FF ;
+    width: 100%;
+    
+    
+}
+
+button:hover{
+    background-color: #A3A4A4;
+}
+
+.centered{
+    text-align: center;
+}
+
