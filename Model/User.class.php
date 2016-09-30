@@ -1,28 +1,33 @@
 <?php
 
-require_once('../validator/validator.php');
+require_once __DIR__.'/../Validator/Validator.class.php';
+
+require_once __DIR__.'/../Validator/User/UserValidator.class.php';
 
 class User {
-    
 
     protected $id;
-
     protected $username;
-
     protected $email;
-    
-	protected $posts;
-    
+    protected $posts;
+    protected $validator;
+
     function __construct() {
-        $this->posts = new ArrayCollection();
-        
+        $this->validator = new UserValidator();
+        $this->posts = [];
     }
 
+    
     
     function getId() {
         return $this->id;
     }
+    
+    function getValidator() {
+        return $this->validator;
+    }
 
+    
     function getUsername() {
         return $this->username;
     }
@@ -30,7 +35,7 @@ class User {
     function setUsername($username) {
         $this->username = $username;
     }
-    
+
     function getEmail() {
         return $this->email;
     }
@@ -43,17 +48,17 @@ class User {
         return $this->posts;
     }
 
-    function addPost($post){
+    function addPost($post) {
         $this->posts[] = $post;
     }
-    
-    function is_valid(){
-     if(validateUsername($this->getUsername())&& validateEmail($this->getEmail())){
-         return TRUE;
-     }
-        return FALSE;
+
+    function isValid() {
+
+        if ($this->validator->isValid($this)) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
     }
-    
-    
 
 }

@@ -1,15 +1,15 @@
 <?php
 
-require_once 'Model/User.php';
-require_once 'Model/Post.php';
+require_once 'Model/User.class.php';
+require_once 'Model/Post.class.php';
 
 $usuario = new User();
 $usuario->setUsername('Tomas');
 $usuario->setEmail('tomiechague@gmail.com');
 
-if($usuario->is_valid()){
+if($usuario->isValid()){
     echo "El usuario es correcto";
 }else{
-    echo "El usuario es incorrecto";
+    var_dump($usuario->getValidator()->getErrors());
 }
 
