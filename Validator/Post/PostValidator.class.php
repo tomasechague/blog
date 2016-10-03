@@ -13,12 +13,23 @@ require_once '../Validator.class.php';
  * @author Tomas
  */
 class PostValidator extends Validator {
-    
+
     function __construct() {
         parent::__construct();
     }
-    
-    function isValid(){
-        
+
+    function isValid(Post $anPost) {
+        if (!$this->validateNoEmpty($anPost->getTitle())) {
+            $this->addError('title', 'El titulo es obligatorio'
+                    . '');
+        }
+        if (!$this->validateNoEmpty($anPost->getContent())) {
+            $this->addError('content', 'La publicacion debe tener contenido');
+        }
+        if (!$this->validateNoEmpty($anPost->getUserId())) {
+            $this->addError('userId', 'No se encuentra el usuario');
+        }
+        return empty($this->errors);
     }
+
 }

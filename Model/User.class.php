@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__.'/../Validator/Validator.class.php';
-
+require_once __DIR__.'/../config/database.php';
 require_once __DIR__.'/../Validator/User/UserValidator.class.php';
 
 class User {
@@ -59,6 +59,26 @@ class User {
         } else {
             return FALSE;
         }
+    }
+    
+    function save($anUser){
+        $pdo = conectar();
+    
+     try{
+         $statement = $pdo->beginTransaction();
+         $statement = $pdo->prepare("COUNT(*) from users");
+         if(!$statement){
+           //hay que hacer un insert del usuario
+        
+    $statement = $pdo->prepare("INSERT INTO users(username,email) 
+                                VALUES(:username, :email)");
+    $statement->bindParam(':username',getUsername());
+    $statement->bindParam(':email',getEmail());
+    $statement->execute();
+    $result = $statement->fetchColumn();
+
+
+    return $result;
     }
 
 }

@@ -23,7 +23,7 @@ class Post {
 
     protected $createAt;
     
-    protected $user;
+    protected $userId;
     
     function getId() {
         return $this->id;
@@ -41,8 +41,8 @@ class Post {
         return $this->createAt;
     }
 
-    function getUser() {
-        return $this->user;
+    function getUserId() {
+        return $this->userId;
     }
 
     function setTitle($title) {
@@ -57,8 +57,16 @@ class Post {
         $this->createAt = $createAt;
     }
 
-    function setUser($user) {
-        $this->user = $user;
+    function setUserId($userId) {
+        $this->userId = $userId;
+    }
+    function isValid() {
+
+        if ($this->validator->isValid($this)) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
     }
     
    
