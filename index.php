@@ -6,7 +6,9 @@ require_once 'Model/Post.class.php';
 $usuario = new User();
 $usuario->setUsername('Tomas');
 $usuario->setEmail('tomiechague@gmail.com');
+$usuario->save();
 
+die();
 $publicacion = new Post();
 $publicacion->setTitle('Aprendiendo OOP');
 $publicacion->setContent('Esto es una prueba de programacion orientada a objetos');

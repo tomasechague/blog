@@ -1,6 +1,11 @@
 <?php
 
 //aca van todas las validaciones esenciales 
+
+/**
+* @author   Echague Tomas <tomiechague@gmail.com>
+* @access   public
+*/
 class Validator{
     
     protected $errors;
@@ -10,10 +15,19 @@ class Validator{
      $this->errors = [];
  }   
  
- 
+ /* * Obtiene el arreglo de errores de un objeto
+  *ejecutar siempre el metodo isValid() para no traer errores desactualizados
+  */
  
  function getErrors() {
      return $this->errors;
+ }
+ 
+ /** vacia el arreglo de errores 
+  * @access public 
+  */
+ function resetErrors(){
+     $this->errors= [];
  }
 
  function addError($key,$error){

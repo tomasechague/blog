@@ -1,19 +1,21 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Description of Post
  *
  * @author Tomas
+ * 
+ * Si agrego un campo en la base de datos, tengo que agregarlo en la variable fields
  */
 
 
-class Post {
+
+require_once __DIR__ . '/../ORM/ORM.class.php';
+require_once __DIR__ . '/../Validator/Post/PostValidator.class.php';
+
+
+
+class Post extends ORM {
 
     protected $id;
 
@@ -25,6 +27,17 @@ class Post {
     
     protected $userId;
     
+    protected $tableName;
+    
+    protected  $fields;
+    
+    protected  $validator;
+            
+    function __construct(){
+    $this->tableName = 'posts';
+    $this->fields = ['id','user_id','title','content','createAt'];
+    $this->validator = new PostValidator();
+    }
     function getId() {
         return $this->id;
     }

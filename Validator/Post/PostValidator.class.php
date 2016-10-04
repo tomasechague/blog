@@ -1,6 +1,7 @@
 <?php
 
-require_once '../Validator.class.php';
+require_once __DIR__.'/../../Model/Post.class.php';
+require_once __DIR__.'/../Validator.class.php';
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -19,6 +20,7 @@ class PostValidator extends Validator {
     }
 
     function isValid(Post $anPost) {
+        $this->resetErrors();
         if (!$this->validateNoEmpty($anPost->getTitle())) {
             $this->addError('title', 'El titulo es obligatorio'
                     . '');

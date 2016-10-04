@@ -19,7 +19,9 @@ class UserValidator extends Validator {
         parent::__construct();
     }
 
-    function isValid(User $anUser) {
+    function isValid(User $anUser){ 
+        
+        $this->resetErrors();
 
         if (!$this->validateNoEmpty($anUser->getUsername())) {
             $this->addError('username', 'El campo no debe estar vacio');
