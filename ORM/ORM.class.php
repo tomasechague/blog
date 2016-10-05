@@ -52,9 +52,13 @@ class ORM {
 
     public function getValues() {
         $objectValues = get_object_vars($this);
+        $objectValuesDashed = [];
+        foreach($objectValues as $objectValue){
+            $objectValuesDashed[] = $this->camel2dashed($objectValue);
+        }
         $values = [];
         foreach ($this->fields as $field) {
-            $values[] = '\''.$objectValues[$field].'\'';
+            $values[] = '\''.$objectValuesDashed[$field].'\'';
         }
         
         $values = implode(',', $values);
