@@ -53,8 +53,8 @@ class ORM {
     public function getValues() {
         $objectValues = get_object_vars($this);
         $objectValuesDashed = [];
-        foreach($objectValues as $objectValue){
-            $objectValuesDashed[] = $this->camel2dashed($objectValue);
+        foreach($objectValues as $key=>$value){
+            $objectValuesDashed[$this->camel2dashed($key)] = $value;
         }
         $values = [];
         foreach ($this->fields as $field) {
