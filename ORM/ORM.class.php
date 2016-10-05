@@ -42,7 +42,7 @@ class ORM {
         $statement->bindParam(':tableName', $this->tableName);
         $statement->bindParam(':fields', $fields);
         $statement->bindParam(':values', $values);
-
+//sarasa
         $statement->execute();
     }
 
