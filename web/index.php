@@ -1,7 +1,7 @@
 <?php
 
-require_once 'Model/User.class.php';
-require_once 'Model/Post.class.php';
+require_once __DIR__ . '/../Model/User.class.php';
+require_once __DIR__ . '/../Model/Post.class.php';
 
 $usuario = new User();
 $usuario->setUsername('Tomas');

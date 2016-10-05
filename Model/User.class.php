@@ -19,12 +19,12 @@ class User extends ORM {
     protected $email;
     protected $posts;
     protected $validator;
-    protected $postId;
-                function __construct() {
+    
+    function __construct() {
         $this->validator = new UserValidator();
         $this->posts = [];
         $this->tableName = 'users';
-        $this->fields = ['id','username','email'];
+        $this->fields = ['username','email'];
     }
 
     function getId() {

@@ -34,9 +34,9 @@ class Post extends ORM {
     protected  $validator;
             
     function __construct(){
-    $this->tableName = 'posts';
-    $this->fields = ['id','user_id','title','content','createAt'];
-    $this->validator = new PostValidator();
+        $this->tableName = 'posts';
+        $this->fields = ['user_id','title','content','createAt'];
+        $this->validator = new PostValidator();
     }
     function getId() {
         return $this->id;

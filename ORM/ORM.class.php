@@ -43,7 +43,7 @@ class ORM {
         $statement->bindParam(':fields', $fields);
         $statement->bindParam(':values', $values);
 
-        // $statement->execute();
+        $statement->execute();
     }
 
     public function getId() {
@@ -56,6 +56,9 @@ class ORM {
         foreach ($this->fields as $field) {
             $values[] = $objectValues[$field];
         }
+        
+        $values = implode(',', $values);
+        
         return $values;
     }
 
