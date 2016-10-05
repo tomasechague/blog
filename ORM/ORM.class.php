@@ -36,10 +36,8 @@ class ORM {
         $tableName = $this->tableName;
 
         $pdo = conectar();
-
         $statement = $pdo->prepare("INSERT INTO $tableName($fields)
                                     VALUES($values)");
-        
         $statement->execute();
     }
 
