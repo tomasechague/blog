@@ -54,7 +54,7 @@ class ORM {
         $objectValues = get_object_vars($this);
         $values = [];
         foreach ($this->fields as $field) {
-            $values[] = $objectValues[$field];
+            $values[] = '\''.$objectValues[$field].'\'';
         }
         
         $values = implode(',', $values);
