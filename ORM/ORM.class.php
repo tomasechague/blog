@@ -33,16 +33,13 @@ class ORM {
 
         $fields = implode(',', $this->fields);
         $values = $this->getValues();
-        
+        $tableName = $this->tableName;
 
         $pdo = conectar();
 
-        $statement = $pdo->prepare('INSER INTO :tableName(:fields)
-                                    VALUES(:values)');
-        $statement->bindParam(':tableName', $this->tableName);
-        $statement->bindParam(':fields', $fields);
-        $statement->bindParam(':values', $values);
-//sarasa
+        $statement = $pdo->prepare("INSERT INTO $tableName($fields)
+                                    VALUES($values)");
+        
         $statement->execute();
     }
 
