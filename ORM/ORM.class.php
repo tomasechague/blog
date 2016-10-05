@@ -26,13 +26,17 @@ class ORM {
     private function update(){echo 'update';}
     private function insert(){
         echo $this->camel2dashed('UserValidator');
+        
+       $fields = implode(',',$this->fields);
+       $values =  $this->getValues();
+        
         $pdo = conectar();
         
         $statement = $pdo->prepare('INSER INTO :tableName(:fields)
                                     VALUES(:values)');
         $statement->bindParam(':tableName', $this->tableName);
-        $statement->bindParam(':fields', implode(',',$this->fields));
-        $statement->bindParam(':values', $this->getValues());
+        $statement->bindParam(':fields', $fields);
+        $statement->bindParam(':values',$values);
         
        // $statement->execute();
         
@@ -43,7 +47,7 @@ class ORM {
     }
     
     public function getValues(){
-        var_dump(get_object_vars($this));
+       $objectValues =  get_object_vars($this);
     }
     
     public function camel2dashed($className) {
