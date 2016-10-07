@@ -7,6 +7,8 @@ $usuario = new User();
 $usuario->setUsername('Tomas');
 $usuario->setEmail('tomiechague@gmail.com');
 $usuario->save();
+$usuario->setUsername('Manuel');
+$usuario->save();
 die();
 
 $publicacion = new Post();

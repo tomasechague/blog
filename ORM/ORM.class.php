@@ -26,21 +26,18 @@ class ORM {
     }
 
     private function update() {
-        $fields = $this->fields;
-        $values = $this->getValues();
+        
         $tableName = $this->tableName;
-        $objectValues = get_object_vars($this);
-        $objectValuesDashed = [];
-        foreach($objectValues as $key=>$value){
-         $string[] = $objectValuesDashed[$this->camel2dashed($key)].'='. $value;
-        }
-
+        $values = $this->getValuesForUpdate();
+        $id = $this->getId();
+        
+       
         $pdo = conectar();
         $statement = $pdo->prepare("UPDATE $tableName
-                                    SET $field
-                                    VALUES($values)");
+                                    SET  $values
+                                    WHERE id = $id");
         $statement->execute();
-        $this->id = $statement->lastInsertId();
+        
     }
 
     private function insert() {
@@ -77,6 +74,21 @@ class ORM {
 
     public function camel2dashed($className) {
         return strtolower(preg_replace('/([a-zA-Z])(?=[A-Z])/', '$1_', $className));
+    }
+    public function getValuesForUpdate() {
+        $objectValues = get_object_vars($this);
+        $objectValuesDashed = [];
+        foreach($objectValues as $key=>$value){
+            $objectValuesDashed[$this->camel2dashed($key)] = $value;
+        }
+        $values = [];
+        foreach ($this->fields as $field) {
+            $values[] = $field.'='.$objectValuesDashed[$field];
+        }
+        
+        $values = implode(',', $values);
+        
+        return $values;
     }
 
 }
