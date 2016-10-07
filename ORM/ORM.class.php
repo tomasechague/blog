@@ -11,14 +11,14 @@ class ORM {
 
     protected $tableName;
     protected $fields;
-    
-   public function getElementById($id){
-    
+
+    public function getElementById($id) {
+
         $searchResult = $this->loadById($id);
         $this->setValues($searchResult);
         return $this;
     }
-    
+
     public function save() {
         if ($this->getId()) {
             $this->update();
@@ -29,22 +29,27 @@ class ORM {
     }
 
     public function delete() {
-        echo 'delete';
+        if ($id = $this->getId()) {
+            $tableName = $this->tableName;
+            $pdo = conectar();
+            $statement = $pdo->prepare("DELETE FROM $tableName 
+                                        WHERE id = $id");
+            $statement->execute();
+        }
     }
 
     private function update() {
-        
+
         $tableName = $this->tableName;
         $values = $this->getValuesForUpdate();
         $id = $this->getId();
-        
-       
+
+
         $pdo = conectar();
         $statement = $pdo->prepare("UPDATE $tableName
                                     SET  $values
                                     WHERE id = $id");
         $statement->execute();
-        
     }
 
     private function insert() {
@@ -66,39 +71,40 @@ class ORM {
     public function getValues() {
         $objectValues = get_object_vars($this);
         $objectValuesDashed = [];
-        foreach($objectValues as $key=>$value){
+        foreach ($objectValues as $key => $value) {
             $objectValuesDashed[$this->camel2dashed($key)] = $value;
         }
         $values = [];
         foreach ($this->fields as $field) {
-            $values[] = '\''.$objectValuesDashed[$field].'\'';
+            $values[] = '\'' . $objectValuesDashed[$field] . '\'';
         }
-        
+
         $values = implode(',', $values);
-        
+
         return $values;
     }
 
     public function camel2dashed($className) {
         return strtolower(preg_replace('/([a-zA-Z])(?=[A-Z])/', '$1_', $className));
     }
+
     public function getValuesForUpdate() {
         $objectValues = get_object_vars($this);
         $objectValuesDashed = [];
-        foreach($objectValues as $key=>$value){
+        foreach ($objectValues as $key => $value) {
             $objectValuesDashed[$this->camel2dashed($key)] = $value;
         }
         $values = [];
         foreach ($this->fields as $field) {
-            $values[] = $field.'=\''.$objectValuesDashed[$field].'\'';
+            $values[] = $field . '=\'' . $objectValuesDashed[$field] . '\'';
         }
-        
+
         $values = implode(',', $values);
-        
+
         return $values;
     }
-    
-    function loadById($id){
+
+    function loadById($id) {
         $pdo = conectar();
         $tableName = $this->tableName;
         $statement = $pdo->prepare("SELECT * 
@@ -107,8 +113,8 @@ class ORM {
         $statement->execute();
         $result = $statement->fetchAll();
         return $result[0];
-                
     }
+
     public function setValues($values) {
         throw new Exception('Este metodo debe estar implementado en la subclase');
     }

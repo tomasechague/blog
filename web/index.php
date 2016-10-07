@@ -11,6 +11,7 @@ $usuario->setUsername('Manuel');
 $usuario->setEmail('manueldelapenna@gmail.com');
 $usuario->save();
 $usuario2 = User::retrieve(8);
+$usuario2->delete();
 die();
 
 $publicacion = new Post();

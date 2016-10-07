@@ -31,6 +31,7 @@ class User extends ORM {
     
         $instance = new self();
         $instance->getElementById($id);
+        return $instance;
     }
 
     function getId() {

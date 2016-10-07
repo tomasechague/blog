@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-09-2016 a las 10:55:21
+-- Tiempo de generación: 07-10-2016 a las 15:49:14
 -- Versión del servidor: 10.1.13-MariaDB
--- Versión de PHP: 5.6.23
+-- Versión de PHP: 7.0.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -47,6 +47,14 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
+-- Volcado de datos para la tabla `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `email`) VALUES
+(2, 'Tomas', 'tomiechague@gmail.com'),
+(6, 'manuel', 'tomiechague@gmail.com');
+
+--
 -- Índices para tablas volcadas
 --
 
@@ -76,7 +84,7 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 --
 -- Restricciones para tablas volcadas
 --
