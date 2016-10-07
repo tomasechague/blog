@@ -67,27 +67,5 @@ class User extends ORM {
         }
     }
 
-   /* function save($anUser) {
-        $pdo = conectar();
-
-        try {
-            $statement = $pdo->beginTransaction();
-            $statement = $pdo->prepare("COUNT(*) from users");
-            if (!$statement) {
-                //hay que hacer un insert del usuario
-
-                $statement = $pdo->prepare("INSERT INTO users(username,email) 
-                                VALUES(:username, :email)");
-                $statement->bindParam(':username', getUsername());
-                $statement->bindParam(':email', getEmail());
-                $statement->execute();
-                $result = $statement->fetchColumn();
-
-
-                return $result;
-            }
-        } catch (Exception $e) {
-            
-        }
-    }*/
+    
 }

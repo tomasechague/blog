@@ -26,7 +26,21 @@ class ORM {
     }
 
     private function update() {
-        echo 'update';
+        $fields = $this->fields;
+        $values = $this->getValues();
+        $tableName = $this->tableName;
+        $objectValues = get_object_vars($this);
+        $objectValuesDashed = [];
+        foreach($objectValues as $key=>$value){
+         $string[] = $objectValuesDashed[$this->camel2dashed($key)].'='. $value;
+        }
+
+        $pdo = conectar();
+        $statement = $pdo->prepare("UPDATE $tableName
+                                    SET $field
+                                    VALUES($values)");
+        $statement->execute();
+        $this->id = $statement->lastInsertId();
     }
 
     private function insert() {
@@ -34,11 +48,11 @@ class ORM {
         $fields = implode(',', $this->fields);
         $values = $this->getValues();
         $tableName = $this->tableName;
-
         $pdo = conectar();
         $statement = $pdo->prepare("INSERT INTO $tableName($fields)
                                     VALUES($values)");
         $statement->execute();
+        $this->id = $pdo->lastInsertId();
     }
 
     public function getId() {
