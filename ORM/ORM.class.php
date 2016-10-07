@@ -12,12 +12,11 @@ class ORM {
     protected $tableName;
     protected $fields;
     
-   public static function retrieve($id){
+   public function getElementById($id){
     
-        $instance = new self();
-        $searchResult = $instance->loadById($id);
-        $instance->setValues($searchResult);
-        return $instance;
+        $searchResult = $this->loadById($id);
+        $this->setValues($searchResult);
+        return $this;
     }
     
     public function save() {
@@ -101,7 +100,7 @@ class ORM {
     
     function loadById($id){
         $pdo = conectar();
-        $tableName=$this->tableName;
+        $tableName = $this->tableName;
         $statement = $pdo->prepare("SELECT * 
                                     FROM $tableName
                                     WHERE id = $id");
@@ -110,7 +109,7 @@ class ORM {
         return $result[0];
                 
     }
-    public function setValues() {
+    public function setValues($values) {
         throw new Exception('Este metodo debe estar implementado en la subclase');
     }
 

@@ -26,6 +26,12 @@ class User extends ORM {
         $this->tableName = 'users';
         $this->fields = ['username','email'];
     }
+    
+    public static function retrieve($id){
+    
+        $instance = new self();
+        $instance->getElementById($id);
+    }
 
     function getId() {
         return $this->id;
