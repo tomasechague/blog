@@ -8,7 +8,9 @@ $usuario->setUsername('Tomas');
 $usuario->setEmail('tomiechague@gmail.com');
 $usuario->save();
 $usuario->setUsername('Manuel');
+$usuario->setEmail('manueldelapenna@gmail.com');
 $usuario->save();
+$usuario2 = User::retrieve(8);
 die();
 
 $publicacion = new Post();

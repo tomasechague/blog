@@ -11,7 +11,15 @@ class ORM {
 
     protected $tableName;
     protected $fields;
-
+    
+   public static function retrieve($id){
+    
+        $instance = new self();
+        $searchResult = $instance->loadById($id);
+        $instance->setValues($searchResult);
+        return $instance;
+    }
+    
     public function save() {
         if ($this->getId()) {
             $this->update();
@@ -83,12 +91,27 @@ class ORM {
         }
         $values = [];
         foreach ($this->fields as $field) {
-            $values[] = $field.'='.$objectValuesDashed[$field];
+            $values[] = $field.'=\''.$objectValuesDashed[$field].'\'';
         }
         
         $values = implode(',', $values);
         
         return $values;
+    }
+    
+    function loadById($id){
+        $pdo = conectar();
+        $tableName=$this->tableName;
+        $statement = $pdo->prepare("SELECT * 
+                                    FROM $tableName
+                                    WHERE id = $id");
+        $statement->execute();
+        $result = $statement->fetchAll();
+        return $result[0];
+                
+    }
+    public function setValues() {
+        throw new Exception('Este metodo debe estar implementado en la subclase');
     }
 
 }

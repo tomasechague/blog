@@ -13,7 +13,7 @@ require_once __DIR__ . '/../ORM/ORM.class.php';
 require_once __DIR__ . '/../Validator/User/UserValidator.class.php';
 
 class User extends ORM {
-
+    
     protected $id;
     protected $username;
     protected $email;
@@ -67,5 +67,10 @@ class User extends ORM {
         }
     }
 
+    function setValues($values) {
+        $this->setUsername($values['username']);
+        $this->setEmail($values['email']);
+        $this->id = $values['id'];
+    }
     
 }
