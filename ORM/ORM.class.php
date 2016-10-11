@@ -99,16 +99,16 @@ class ORM {
     public static function dashed2camel($string) {
         $array = explode('_', $string);
         $result = '';
-        if (count($array) > 1) {
-            $i = 0;
-            foreach ($array as $aux) {
-                if ($i) {
-                    $aux = ucfirst($aux);
-                }
-                $i++;
-                $result .= $aux;
+
+        $i = 0;
+        foreach ($array as $aux) {
+            if ($i) {
+                $aux = ucfirst($aux);
             }
+            $i++;
+            $result .= $aux;
         }
+
         return $result;
     }
 
@@ -140,7 +140,7 @@ class ORM {
     }
 
     public function setValues($values) {
-       
+
 
         $map = array();
         foreach ($values as $key => $value) {
