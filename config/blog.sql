@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-10-2016 a las 15:49:14
+-- Tiempo de generación: 11-10-2016 a las 15:59:42
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 7.0.8
 
@@ -31,8 +31,15 @@ CREATE TABLE `posts` (
   `user_id` int(11) DEFAULT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `content` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `createAt` datetime NOT NULL
+  `create_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `posts`
+--
+
+INSERT INTO `posts` (`id`, `user_id`, `title`, `content`, `create_at`) VALUES
+(1, 2, 'Probando OOP', 'probando', '2016-10-11 10:01:45');
 
 -- --------------------------------------------------------
 
@@ -52,7 +59,20 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `email`) VALUES
 (2, 'Tomas', 'tomiechague@gmail.com'),
-(6, 'manuel', 'tomiechague@gmail.com');
+(6, 'manuel', 'tomiechague@gmail.com'),
+(9, 'Manuel', 'manueldelapenna@gmail.com'),
+(11, 'Manuel', 'manueldelapenna@gmail.com'),
+(12, 'Manuel', 'manueldelapenna@gmail.com'),
+(13, 'Manuel', 'manueldelapenna@gmail.com'),
+(14, 'Manuel', 'manueldelapenna@gmail.com'),
+(15, 'Manuel', 'manueldelapenna@gmail.com'),
+(16, 'Manuel', 'manueldelapenna@gmail.com'),
+(17, 'Manuel', 'manueldelapenna@gmail.com'),
+(18, 'Manuel', 'manueldelapenna@gmail.com'),
+(19, 'Manuel', 'manueldelapenna@gmail.com'),
+(20, 'Manuel', 'manueldelapenna@gmail.com'),
+(21, 'Marco', 'Marcopolo@gmail.com'),
+(22, 'Marco', 'Marcopolo@gmail.com');
 
 --
 -- Índices para tablas volcadas
@@ -79,12 +99,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- Restricciones para tablas volcadas
 --

@@ -35,7 +35,7 @@ class Post extends ORM {
             
     function __construct(){
         $this->tableName = 'posts';
-        $this->fields = ['user_id','title','content','createAt'];
+        $this->fields = ['user_id','title','content','create_at'];
         $this->validator = new PostValidator();
     }
     
