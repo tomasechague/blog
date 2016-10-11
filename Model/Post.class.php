@@ -38,6 +38,14 @@ class Post extends ORM {
         $this->fields = ['user_id','title','content','createAt'];
         $this->validator = new PostValidator();
     }
+    
+    public static function retrieve($id){
+    
+        $instance = new self();
+        $instance->getElementById($id);
+        return $instance;
+    }
+    
     function getId() {
         return $this->id;
     }

@@ -80,4 +80,21 @@ class User extends ORM {
         $this->id = $values['id'];
     }
     
+    function getElementByUsername($username){
+        $searchResult = new User();
+        $searchResult = $this->loadByUsername($username);
+        $this->setValues($searchResult);
+        return $this;
+    }
+    
+    function loadByUsername($username){
+        $pdo = conectar();
+        $tableName = $this->tableName;
+        $statement = $pdo->prepare("SELECT * 
+                                    FROM $tableName
+                                    WHERE username = $username");
+        $statement->execute();
+        $result = $statement->fetchAll();
+        return $result;
+    }
 }

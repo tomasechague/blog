@@ -117,6 +117,13 @@ class ORM {
 
     public function setValues($values) {
         throw new Exception('Este metodo debe estar implementado en la subclase');
+      /*  $map = array( 'prop1' => $something, 
+       *                'prop2' => $otherthing, 
+       *                'prop3' => $morethings ); 
+        foreach($map as $k => $v) 
+            $object->$k = $v;
+       */
+        
     }
 
 }

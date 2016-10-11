@@ -10,8 +10,10 @@ $usuario->save();
 $usuario->setUsername('Manuel');
 $usuario->setEmail('manueldelapenna@gmail.com');
 $usuario->save();
-$usuario2 = User::retrieve(8);
+$usuario2 = User::retrieve(7);
 $usuario2->delete();
+$usuario3 = User::getElementByUsername('Tomas');
+var_dump($usuario3);
 die();
 
 $publicacion = new Post();
