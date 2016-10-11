@@ -27,11 +27,11 @@ class User extends ORM {
         $this->fields = ['username','email'];
     }
     
-    public static function retrieve($id){
-    
-        $instance = new self();
-        $instance->getElementById($id);
-        return $instance;
+    public static function getElementByUsername($username){
+        $searchResult = new User();
+        $searchResult = $this->loadByUsername($username);
+        $this->setValues($searchResult);
+        return $this;
     }
 
     function getId() {
@@ -79,22 +79,5 @@ class User extends ORM {
         $this->setEmail($values['email']);
         $this->id = $values['id'];
     }
-    
-    function getElementByUsername($username){
-        $searchResult = new User();
-        $searchResult = $this->loadByUsername($username);
-        $this->setValues($searchResult);
-        return $this;
-    }
-    
-    function loadByUsername($username){
-        $pdo = conectar();
-        $tableName = $this->tableName;
-        $statement = $pdo->prepare("SELECT * 
-                                    FROM $tableName
-                                    WHERE username = $username");
-        $statement->execute();
-        $result = $statement->fetchAll();
-        return $result;
-    }
+   
 }

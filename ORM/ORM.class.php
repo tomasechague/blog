@@ -12,9 +12,17 @@ class ORM {
     protected $tableName;
     protected $fields;
 
-    public function getElementById($id) {
+    public static function retrieveBy($key, $value){
+        
+        $class = get_called_class();
+        $instance = new $class();
+        $instance->getElementByKeyValue($key,$value);
+        return $instance;
+    }
+    
+    public function getElementByKeyValue($key,$value) {
 
-        $searchResult = $this->loadById($id);
+        $searchResult = $this->loadByKeyValue($key,$value);
         $this->setValues($searchResult);
         return $this;
     }
@@ -104,12 +112,12 @@ class ORM {
         return $values;
     }
 
-    function loadById($id) {
+    function loadByKeyValue($key, $value) {
         $pdo = conectar();
         $tableName = $this->tableName;
         $statement = $pdo->prepare("SELECT * 
                                     FROM $tableName
-                                    WHERE id = $id");
+                                    WHERE $key = '$value'");
         $statement->execute();
         $result = $statement->fetchAll();
         return $result[0];

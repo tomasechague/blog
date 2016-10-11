@@ -39,13 +39,6 @@ class Post extends ORM {
         $this->validator = new PostValidator();
     }
     
-    public static function retrieve($id){
-    
-        $instance = new self();
-        $instance->getElementById($id);
-        return $instance;
-    }
-    
     function getId() {
         return $this->id;
     }
