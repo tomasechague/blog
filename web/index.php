@@ -3,6 +3,13 @@
 require_once __DIR__ . '/../Model/User.class.php';
 require_once __DIR__ . '/../Model/Post.class.php';
 
+//$user = new User();
+//$user->setUsername('Marco');
+//$user->setEmail('Marcopolo@gmail.com');
+//$user->save();
+//$user->save();
+//die(); 
+
 $usuario = User::retrieveBy('id',11);
 $post = Post::retrieveBy('id',1);
 

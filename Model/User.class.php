@@ -27,13 +27,6 @@ class User extends ORM {
         $this->fields = ['username','email'];
     }
     
-    public static function getElementByUsername($username){
-        $searchResult = new User();
-        $searchResult = $this->loadByUsername($username);
-        $this->setValues($searchResult);
-        return $this;
-    }
-
     function getId() {
         return $this->id;
     }
@@ -74,10 +67,5 @@ class User extends ORM {
         }
     }
 
-    function setValues($values) {
-        $this->setUsername($values['username']);
-        $this->setEmail($values['email']);
-        $this->id = $values['id'];
-    }
    
 }

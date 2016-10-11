@@ -12,17 +12,17 @@ class ORM {
     protected $tableName;
     protected $fields;
 
-    public static function retrieveBy($key, $value){
-        
+    public static function retrieveBy($key, $value) {
+
         $class = get_called_class();
         $instance = new $class();
-        $instance->getElementByKeyValue($key,$value);
+        $instance->getElementByKeyValue($key, $value);
         return $instance;
     }
-    
-    public function getElementByKeyValue($key,$value) {
 
-        $searchResult = $this->loadByKeyValue($key,$value);
+    public function getElementByKeyValue($key, $value) {
+
+        $searchResult = $this->loadByKeyValue($key, $value);
         $this->setValues($searchResult);
         return $this;
     }
@@ -80,7 +80,7 @@ class ORM {
         $objectValues = get_object_vars($this);
         $objectValuesDashed = [];
         foreach ($objectValues as $key => $value) {
-            $objectValuesDashed[$this->camel2dashed($key)] = $value;
+            $objectValuesDashed[self::camel2dashed($key)] = $value;
         }
         $values = [];
         foreach ($this->fields as $field) {
@@ -92,15 +92,31 @@ class ORM {
         return $values;
     }
 
-    public function camel2dashed($className) {
-        return strtolower(preg_replace('/([a-zA-Z])(?=[A-Z])/', '$1_', $className));
+    public static function camel2dashed($string) {
+        return strtolower(preg_replace('/([a-zA-Z])(?=[A-Z])/', '$1_', $string));
+    }
+
+    public static function dashed2camel($string) {
+        $array = explode('_', $string);
+        $result = '';
+        if (count($array) > 1) {
+            $i = 0;
+            foreach ($array as $aux) {
+                if ($i) {
+                    $aux = ucfirst($aux);
+                }
+                $i++;
+                $result .= $aux;
+            }
+        }
+        return $result;
     }
 
     public function getValuesForUpdate() {
         $objectValues = get_object_vars($this);
         $objectValuesDashed = [];
         foreach ($objectValues as $key => $value) {
-            $objectValuesDashed[$this->camel2dashed($key)] = $value;
+            $objectValuesDashed[self::camel2dashed($key)] = $value;
         }
         $values = [];
         foreach ($this->fields as $field) {
@@ -124,14 +140,19 @@ class ORM {
     }
 
     public function setValues($values) {
-        throw new Exception('Este metodo debe estar implementado en la subclase');
-      /*  $map = array( 'prop1' => $something, 
-       *                'prop2' => $otherthing, 
-       *                'prop3' => $morethings ); 
-        foreach($map as $k => $v) 
-            $object->$k = $v;
-       */
-        
+       
+
+        $map = array();
+        foreach ($values as $key => $value) {
+            if (!is_int($key)) {
+                $map[self::dashed2camel($key)] = $value;
+            }
+        }
+
+        foreach ($map as $k => $v)
+            $this->$k = $v;
+
+        return $this;
     }
 
 }
