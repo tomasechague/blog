@@ -13,7 +13,7 @@ require_once __DIR__ . '/../Model/Post.class.php';
 $usuario = User::retrieveBy('id',2);
 $userPosts = $usuario->getPosts();
 foreach ($userPosts as $userPost){
-    echo $userPost->getTitle();
+    echo $userPost->getTitle().'<br>';
 }
 die();
 $usuario = User::retrieveBy('id',11);
