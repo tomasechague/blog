@@ -58,7 +58,7 @@ class User extends ORM {
         $posts = [];
         foreach ($result as $post) {
            $posteo = new Post(); 
-           $posts[] = $this->setValues($post);
+           $posts[] = $posteo->setValues($post);
         }
         return $posts ;
     }
