@@ -1,39 +1,11 @@
-<?php
-
-require_once __DIR__ . '/../Model/User.class.php';
-require_once __DIR__ . '/../Model/Post.class.php';
-
-//$user = new User();
-//$user->setUsername('Marco');
-//$user->setEmail('Marcopolo@gmail.com');
-//$user->save();
-//$user->save();
-//die(); 
-
-$usuario = User::retrieveBy('id',2);
-$userPosts = $usuario->getPosts();
-foreach ($userPosts as $userPost){
-    echo $userPost->getTitle().'<br>';
-}
-die();
-$usuario = User::retrieveBy('id',11);
-$post = Post::retrieveBy('id',1);
-
-die();
-
-$publicacion = new Post();
-$publicacion->setTitle('Aprendiendo OOP');
-$publicacion->setContent('Esto es una prueba de programacion orientada a objetos');
-$publicacion->setUserId('Tomas');
-
-if($usuario->isValid()){
-    echo "El usuario es correcto";
-}else{
-    var_dump($usuario->getValidator()->getErrors());
-}
-
-if($publicacion->isValid()){
-    echo "El usuario es correcto";
-}else{
-    var_dump($usuario->getValidator()->getErrors());
-}
+<html>
+    <head>
+       <?php require_once __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'_partials'.DIRECTORY_SEPARATOR.'head.php'; ?> 
+    </head>
+    <body>
+       <?php require_once __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'_partials'.DIRECTORY_SEPARATOR.'header.php'; ?>
+       <?php require_once __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'_partials'.DIRECTORY_SEPARATOR.'footer.php'; ?> 
+        
+    </body>
+    
+</html>
