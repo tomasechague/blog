@@ -10,6 +10,10 @@ require_once __DIR__ . '/../Model/Post.class.php';
 //$user->save();
 //die(); 
 
+
+$usuario = new User();
+$usuario->getPosts(2);
+die();
 $usuario = User::retrieveBy('id',11);
 $post = Post::retrieveBy('id',1);
 

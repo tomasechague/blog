@@ -51,8 +51,18 @@ class User extends ORM {
         $this->email = $email;
     }
 
-    function getPosts() {
-        return $this->posts;
+    function getPosts($id) {
+        //$id = $this->id;
+        $pdo = conectar();
+        $statement = $pdo->prepare("SELECT *
+                                    FROM posts 
+                                    WHERE user_id = $id");
+        $statement->execute();        
+        $result = $statement->fetchAll();
+        foreach($result as $post){
+        $this->addPost($post);
+        }
+        
     }
 
     function addPost($post) {
@@ -66,6 +76,6 @@ class User extends ORM {
             return FALSE;
         }
     }
-
+   
    
 }
