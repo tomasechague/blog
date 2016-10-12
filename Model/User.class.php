@@ -7,26 +7,22 @@
  * 
  * Si agrego un campo en la base de datos, tengo que agregarlo en la variable fields
  */
-
-
 require_once __DIR__ . '/../ORM/ORM.class.php';
 require_once __DIR__ . '/../Validator/User/UserValidator.class.php';
 
 class User extends ORM {
-    
+
     protected $id;
     protected $username;
     protected $email;
-    protected $posts;
     protected $validator;
-    
+
     function __construct() {
         $this->validator = new UserValidator();
-        $this->posts = [];
         $this->tableName = 'users';
-        $this->fields = ['username','email'];
+        $this->fields = ['username', 'email'];
     }
-    
+
     function getId() {
         return $this->id;
     }
@@ -51,18 +47,20 @@ class User extends ORM {
         $this->email = $email;
     }
 
-    function getPosts($id) {
-        //$id = $this->id;
+    function getPosts() {
+        $id = $this->getId();
         $pdo = conectar();
         $statement = $pdo->prepare("SELECT *
                                     FROM posts 
                                     WHERE user_id = $id");
-        $statement->execute();        
+        $statement->execute();
         $result = $statement->fetchAll();
-        foreach($result as $post){
-        $this->addPost($post);
+        $posts = [];
+        foreach ($result as $post) {
+           $posteo = new Post(); 
+           $posts[] = $posteo->setValues($post);
         }
-        
+        return $posts ;
     }
 
     function addPost($post) {
@@ -76,6 +74,5 @@ class User extends ORM {
             return FALSE;
         }
     }
-   
-   
+
 }

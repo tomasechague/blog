@@ -138,7 +138,10 @@ class ORM {
         $result = $statement->fetchAll();
         return $result[0];
     }
-
+/*
+ * Convierte una tupla a una instancia de un objeto 
+ *  
+ */
     public function setValues($values) {
 
 
