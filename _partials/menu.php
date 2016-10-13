@@ -15,26 +15,37 @@
         <ul class="nav navbar-nav">
             <li class="active"><a href="../web/index.php">Inicio</a></li>
 
-            <li><a href="../web/listado.php">Personas</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Post<b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a onclick="cambiarVentana('Post','new')"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Crear Post</a></li>
+                    <li class="divider"></li>
+                    <li><a onclick="cambiarVentana('Post','edit')"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Editar Post</a></li>
+                    <li class="divider"></li>
+                    <li><a onclick="cambiarVentana('Post','delete')"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Eliminar Post</a></li>
+                    <li class="divider"></li>
+                    <li><a onclick="cambiarVentana('Post','list')"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Listar Post</a></li>
+                </ul>
+            </li>
 
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    Administracion<b class="caret"></b>
+                    User<b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a href="../web/verUsuarios.php"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Usuarios</a></li>
+                    <li><a onclick="cambiarVentana('User','new')"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Crear usuario</a></li>
                     <li class="divider"></li>
-                    <li><a href="../web/verGrupos.php"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Grupos</a></li>
+                    <li><a onclick="cambiarVentana('User','edit')"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Editar Usuario</a></li>
                     <li class="divider"></li>
-                    <li><a href="../web/verPermisos.php"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Permisos</a></li>
+                    <li><a onclick="cambiarVentana('User','delete')"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Eliminar Usuario</a></li>
+                    <li class="divider"></li>
+                    <li><a onclick="cambiarVentana('User','list')"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Listar Usuarios</a></li>
                 </ul>
             </li>
         </ul>
 
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href="../scripts/editarMiUsuario.php">Editar Usuario</a></li>
-            <li><a href="../scripts/logout.php"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>Log Out</a></li>
-        </ul>
     </div>
 </nav>
 

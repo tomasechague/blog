@@ -1,8 +1,8 @@
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+if(isset($_POST['action']) && !empty($_POST['action'])) {
+        $variable = "Se ha borrado un post";
+        echo json_encode(array("frase"=>$variable));
+    }
+
 
