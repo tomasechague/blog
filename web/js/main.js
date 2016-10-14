@@ -13,15 +13,13 @@
 //    };
 
 function cambiarVentana(binder, file) {
-    console.log(binder,file);
-        $.ajax({
+     $.ajax({
             type: "POST",
             url: "../View/"+binder+ "/" +file+".php",
             data: {action: 'test'},
-            dataType:'JSON',
         success: function(response){
-        console.log(response.frase);
-        $('.container').html('<h1>'+response.frase+'</h1>');
+            console.log(response);
+        $('.container').html(response);
         
     }
     });

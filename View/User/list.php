@@ -1,8 +1,8 @@
 <?php
+?>       
+<script src="../web/js/user.js" type="text/javascript"></script>
+<h1>Estamos listando los usuarios. Aguarde un momento</h1>
+    
+<button onclick="getUsers()">Listar Usuarios</button>
 
-if(isset($_POST['action']) && !empty($_POST['action'])) {
-        $variable = "Estamos listando los usuarios.Aguarde un momento";
-        echo json_encode(array("frase"=>$variable));
-    }
-
-
+<div class="users"></div>
