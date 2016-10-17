@@ -4,5 +4,5 @@
 </div>
 <?php require_once 'menu.php'; ?> 
 <div class="container">
-
+ <div class="loader"></div>
 </div> 

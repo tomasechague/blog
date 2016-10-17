@@ -4,7 +4,7 @@ function getUsers() {
         url: "../Controller/Ajax/User/list.php",
         datatype: "JSON",
         success: function (response) {
-            getUsersSuccess(response);
+           getUsersSuccess(response);
 
         }
     });

@@ -1,9 +1,8 @@
 <?php ?>       
 <script src="../web/js/user.js" type="text/javascript"></script>
-<h1>Estamos listando los usuarios. Aguarde un momento</h1>
 
-
-<div class="container">
+<div class="users">
+   <div class="container">
     <table class="table">
         <thead>
             <tr>
@@ -15,8 +14,8 @@
         </tbody>
     </table>
 </div>
-
-<div class="users"></div>
+    
+</div>
 
 <script>
     $(document).ready(function () {
