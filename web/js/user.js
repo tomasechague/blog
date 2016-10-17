@@ -5,12 +5,7 @@ function getUsers() {
         datatype: "JSON",
         success: function (response) {
             getUsersSuccess(response);
-            
-//            $.each(response, function (i, item) {
-//                console.log(item);
-//                
-//
-//            });
+
         }
     });
 }
