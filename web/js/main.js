@@ -1,18 +1,20 @@
 function cambiarVentana(binder, file) {
     $('.container').html("");
-     $('.loader').show();  
-//     $.ajax({
-//            type: "POST",
-//            url: "../View/"+binder+ "/" +file+".php",
-//            data: {action: 'test'},
-//        success: function(response){
-//        $('.loader').hide();     
-//        $('.container').html(response);
-//        
-//    }
-//    });
-    };
-
+     $('.modal').show();
+     setTimeout(function(){ 
+     $.ajax({
+            type: "POST",
+            url: "../View/"+binder+ "/" +file+".php",
+            data: {action: 'test'},
+        success: function(response){
+        $('.modal').hide();     
+        $('.container').html(response);
+        
+    }
+    });
+    }, 500);
+    
+    }
 
 
 
