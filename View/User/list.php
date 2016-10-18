@@ -30,7 +30,6 @@
             HTML += '<tr><td>' + item.username + '</td>';
             HTML += '<td>' + item.email + '</td></tr>';
         });
-        console.log(HTML);
         $('.tbody').html(HTML);
     }
 </script>
