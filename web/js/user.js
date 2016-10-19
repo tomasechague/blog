@@ -12,8 +12,7 @@ function getUsers() {
 
 
 function saveUser(data) {
-   data = data.unserialize();
-console.log('entre a save');
+
     $.ajax({
         dataType: 'text', // what to expect back from the PHP script, if anything
         cache: false,
