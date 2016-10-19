@@ -15,12 +15,13 @@ class User extends ORM {
     protected $id;
     protected $username;
     protected $email;
+    protected $avatarLink;
     protected $validator;
 
     function __construct() {
         $this->validator = new UserValidator();
         $this->tableName = 'users';
-        $this->fields = ['username', 'email'];
+        $this->fields = ['username', 'email', 'avatar_link'];
     }
 
     function getId() {
@@ -47,6 +48,14 @@ class User extends ORM {
         $this->email = $email;
     }
 
+    function getAvatarLink() {
+        return $this->avatarLink;
+    }
+
+    function setAvatarLink($avatarLink) {
+        $this->avatarLink = $avatarLink;
+    }
+
     function getPosts() {
         $id = $this->getId();
         $pdo = conectar();
@@ -57,10 +66,10 @@ class User extends ORM {
         $result = $statement->fetchAll();
         $posts = [];
         foreach ($result as $post) {
-           $posteo = new Post(); 
-           $posts[] = $posteo->setValues($post);
+            $posteo = new Post();
+            $posts[] = $posteo->setValues($post);
         }
-        return $posts ;
+        return $posts;
     }
 
     function addPost($post) {

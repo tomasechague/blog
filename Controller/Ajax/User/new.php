@@ -3,8 +3,10 @@
 require_once __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'Model'.DIRECTORY_SEPARATOR.'User.class.php';
 
 $user = new User();
-$username = $_GET['username'];
-$email = $_GET['email'];
+$username = $_REQUEST['username'];
+$email = $_REQUEST['email'];
+$post = $_POST;
+$file = $_FILES;
 
 $user->setUsername($username);
 $user->setEmail($email);

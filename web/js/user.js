@@ -11,15 +11,18 @@ function getUsers() {
 }
 
 
-function saveUser(username, email) {
-
+function saveUser(data) {
+   data = data.unserialize();
+console.log('entre a save');
     $.ajax({
-        type: "GET",
+        dataType: 'text', // what to expect back from the PHP script, if anything
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: data,
+        type: 'post',
         url: "../Controller/Ajax/User/new.php", //controlador del user
-        data: {
-            username: username,
-            email: email
-        },
+
         success: function (data) {
             console.log(data);
             if (data['code'] == 200) {

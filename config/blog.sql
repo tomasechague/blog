@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-10-2016 a las 15:59:42
+-- Tiempo de generación: 19-10-2016 a las 16:02:32
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 7.0.8
 
@@ -19,6 +19,24 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `blog`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `control_ip`
+--
+
+CREATE TABLE `control_ip` (
+  `ip` varchar(15) NOT NULL,
+  `fecha` int(14) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `control_ip`
+--
+
+INSERT INTO `control_ip` (`ip`, `fecha`) VALUES
+('::1', 1476885553);
 
 -- --------------------------------------------------------
 
@@ -39,7 +57,8 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`id`, `user_id`, `title`, `content`, `create_at`) VALUES
-(1, 2, 'Probando OOP', 'probando', '2016-10-11 10:01:45');
+(1, 2, 'Probando OOP', 'probando', '2016-10-11 10:01:45'),
+(2, 2, 'Probando hoy a la mañana', 'quiero que me retorne los posts', '2016-10-12 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -50,33 +69,37 @@ INSERT INTO `posts` (`id`, `user_id`, `title`, `content`, `create_at`) VALUES
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `avatar_link` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `email`) VALUES
-(2, 'Tomas', 'tomiechague@gmail.com'),
-(6, 'manuel', 'tomiechague@gmail.com'),
-(9, 'Manuel', 'manueldelapenna@gmail.com'),
-(11, 'Manuel', 'manueldelapenna@gmail.com'),
-(12, 'Manuel', 'manueldelapenna@gmail.com'),
-(13, 'Manuel', 'manueldelapenna@gmail.com'),
-(14, 'Manuel', 'manueldelapenna@gmail.com'),
-(15, 'Manuel', 'manueldelapenna@gmail.com'),
-(16, 'Manuel', 'manueldelapenna@gmail.com'),
-(17, 'Manuel', 'manueldelapenna@gmail.com'),
-(18, 'Manuel', 'manueldelapenna@gmail.com'),
-(19, 'Manuel', 'manueldelapenna@gmail.com'),
-(20, 'Manuel', 'manueldelapenna@gmail.com'),
-(21, 'Marco', 'Marcopolo@gmail.com'),
-(22, 'Marco', 'Marcopolo@gmail.com');
+INSERT INTO `users` (`id`, `username`, `email`, `avatar_link`) VALUES
+(2, 'Tomas', 'tomiechague@gmail.com', NULL),
+(9, 'Manuel', 'manueldelapenna@gmail.com', NULL),
+(21, 'Marco', 'Marcopolo@gmail.com', NULL),
+(26, 'martina', 'martiarguiano@gmail.com', NULL),
+(27, 'bautista', 'bautiechague@gmail.com', NULL),
+(31, 'monica', 'monipercow@hotmail.com', NULL),
+(32, 'ramiro', 'ramiroechague@hotmail.com', NULL),
+(33, 'sergio', 'sergioarguiano@hotmail.com', NULL),
+(34, 'marcela', 'marcelapercow@hotmail.com', NULL),
+(35, 'mariano', 'alvarez@gmail.com', ''),
+(36, 'echague', 'techague@hotmail.com', ''),
+(37, 'echague', 'tomiechague@gmail.com', '');
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `control_ip`
+--
+ALTER TABLE `control_ip`
+  ADD KEY `ip` (`ip`);
 
 --
 -- Indices de la tabla `posts`
@@ -99,12 +122,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 --
 -- Restricciones para tablas volcadas
 --

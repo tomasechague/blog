@@ -1,9 +1,15 @@
 <script src="../web/js/user.js" type="text/javascript"></script>
 
 <div class="alert alert-success" id="alerts" style="display: none">
-  <strong></strong>
+    <strong></strong>
 </div>
-<form class="form-horizontal" id="myform">
+<form class="form-horizontal" id="myform" enctype="multipart/form-data">
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="avatar-link">Avatar:</label>
+        <div class="col-sm-10"> 
+            <input type="file" class="form-control" id="avatar-link" placeholder="Enter Username">
+        </div>
+    </div>
     <div class="form-group">
         <label class="control-label col-sm-2" for="username">Username:</label>
         <div class="col-sm-10"> 
@@ -30,9 +36,46 @@
             event.preventDefault();
             var username = $("#username").val();
             var email = $("#email").val();
-            saveUser(username, email);
-
-        });
+            var file = $("#avatar-link").prop('files')[0];
+            var data = new FormData();
+            data.append('archivo', file);
+            data.append('email',email);
+            data.append('username', username);
+        console.log('antes de data');    
+        saveUser(data.serialize());
+            
+//             $.ajax({
+//         
+//                dataType: 'text',  // what to expect back from the PHP script, if anything
+//                cache: false,
+//                contentType: false,
+//                processData: false,
+//                data: data,                         
+//                type: 'post',
+//        
+//        
+//        
+//                 url: "../Controller/Ajax/User/new.php", //controlador del user
+//
+//        success: function (data) {
+//            console.log(data);
+//            if (data['code'] == 200) {
+//                $('#alerts').show();
+//                $('#alerts').removeClass('alert-danger');
+//                $('#alerts').addClass('alert-success');
+//                $('strong').text(data['mensaje']);
+//                $('#email').val('');
+//                $('#username').val('');
+//            } else {
+//                $('#alerts').show();
+//                $('#alerts').removeClass('alert-success');
+//                $('#alerts').addClass('alert-danger');
+//                $('strong').text(data['mensaje']);
+//            }
+//        }
+//    });
+//
+     });
     });
 
 </script>
