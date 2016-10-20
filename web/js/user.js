@@ -35,7 +35,7 @@ function saveUser(data) {
                 $('#alerts').show();
                 $('#alerts').removeClass('alert-success');
                 $('#alerts').addClass('alert-danger');
-                $('strong').text(data['mensaje']);
+                $('strong#errors').text(data['mensaje']);
             }
         }
     });

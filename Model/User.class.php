@@ -56,6 +56,18 @@ class User extends ORM {
         $this->avatarLink = $avatarLink;
     }
 
+    function saveAvatarLink($avatarLink) {
+        
+        $add = __DIR__ . DIRECTORY_SEPARATOR . '..'.DIRECTORY_SEPARATOR.'..' . DIRECTORY_SEPARATOR . 'web' . DIRECTORY_SEPARATOR . "uploads/$avatarLink";
+        
+            if (move_uploaded_file($avatarLink, $add)) {
+            return TRUE;
+        } else {
+            $this->addError('file', 'No se ha podido mover el archivo a la carpeta upload');
+            return FALSE;
+        }
+    }
+
     function getPosts() {
         $id = $this->getId();
         $pdo = conectar();

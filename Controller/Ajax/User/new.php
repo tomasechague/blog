@@ -10,9 +10,12 @@ $file = $_FILES;
 
 $user->setUsername($username);
 $user->setEmail($email);
+$user->setAvatarLink($_FILES);
 
 $mensaje = "";
 if($user->isValid()){
+    $user->saveAvatarLink($_FILES[archivo][tmp_name]);
+    $user->setAvatarLink($_FILES[archivo][tmp_name]);
     $user->save();
     $result = ['code'=>200,'mensaje'=>'El usuario se ha agregado correctamente'];
 }else{

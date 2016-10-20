@@ -1,7 +1,9 @@
 <script src="../web/js/user.js" type="text/javascript"></script>
-
-<div class="alert alert-success" id="alerts" style="display: none">
-    <strong></strong>
+<div class="col-sm-12">
+    <div class="col-sm-2"></div>    
+<div class="alert alert-success col-sm-10" id="alerts" style="display: none">
+    <strong id="errors"></strong>
+</div>
 </div>
 <form class="form-horizontal" id="myform" enctype="multipart/form-data">
     <div class="form-group">
