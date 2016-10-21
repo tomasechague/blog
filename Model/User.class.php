@@ -58,14 +58,7 @@ class User extends ORM {
 
     function saveAvatarLink($avatarLink) {
         
-        $add = '/web/uploads/'.  basename($avatarLink);
-        
-            if (move_uploaded_file(basename($avatarLink), $add)) {
-            return TRUE;
-        } else {
-            $this->addError('file', 'No se ha podido mover el archivo a la carpeta upload');
-            return FALSE;
-        }
+       
     }
 
     function getPosts() {
@@ -88,8 +81,8 @@ class User extends ORM {
         $this->posts[] = $post;
     }
 
-    function isValid() {
-        if ($this->validator->isValid($this)) {
+    function isValid($file) {
+        if ($this->validator->isValid($this, $file)) {
             return TRUE;
         } else {
             return FALSE;
