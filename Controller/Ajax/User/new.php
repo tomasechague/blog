@@ -10,7 +10,7 @@ $file = $_FILES['archivo'];
 $user->setUsername($username);
 $user->setEmail($email);
 $user->setAvatarLink($file);
-$targetPath =$_SERVER['PHP_SELF']."/web/uploads/";
+$targetPath =$_SERVER['DOCUMENT_ROOT']."/blog/web/uploads/";
 $targetPath = $targetPath.basename($file['name']);
 $result = move_uploaded_file($file['tmp_name'], $targetPath);
 die();
