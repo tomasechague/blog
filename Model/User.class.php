@@ -58,9 +58,9 @@ class User extends ORM {
 
     function saveAvatarLink($avatarLink) {
         
-        $add = __DIR__ . DIRECTORY_SEPARATOR . '..'.DIRECTORY_SEPARATOR.'..' . DIRECTORY_SEPARATOR . 'web' . DIRECTORY_SEPARATOR . "uploads/$avatarLink";
+        $add = '/web/uploads/'.  basename($avatarLink);
         
-            if (move_uploaded_file($avatarLink, $add)) {
+            if (move_uploaded_file(basename($avatarLink), $add)) {
             return TRUE;
         } else {
             $this->addError('file', 'No se ha podido mover el archivo a la carpeta upload');
