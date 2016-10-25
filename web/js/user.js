@@ -40,4 +40,90 @@ function saveUser(data) {
         }
     });
 
-}        
+} 
+
+function cambiarPersona(id) {
+
+    var username = $('#' + id).val();
+
+    $.ajax({
+        url: "../Controller/Ajax/User/edit.php",
+        type: 'POST',
+        data: {
+            username: username,
+            id: id
+        },
+        success: function (data) {
+
+            alert(data.message);
+            if (data.code == 200) {
+                getUsers();
+
+            }
+        }
+
+
+    });
+}
+
+function cancelarEdicion(id, name) {
+    $('#' + id).val(name);
+    $('#editbutton-' + id).hide();
+    $('#' + id).prop('disabled', true);
+
+}
+
+function eliminarPersona(id) {
+    $.ajax({
+        url: "../Controller/Ajax/User/delete.php",
+        type: 'POST',
+        data: {
+            id: id
+        },
+        success: function (data) {
+
+            alert(data.message);
+            if (data.code == 200) {
+                getUsers();
+            }
+        }
+
+
+    });
+}
+
+function activarModiPersona(id) {
+    $('#' + id).prop('disabled', false);
+    $('#editbutton-' + id).show();
+
+}
+
+function verPersona(id) {
+
+    $.ajax({
+        url: "../Controller/Ajax/User/view.php",
+        type: 'GET',
+        data: {
+            id: id
+        },
+        success: function (data) {
+            var info = data.results;
+            console.log(data.results);
+            if (data.code == 200) {
+                var HTML = '';
+                //aca faltaria la foto
+                HTML += '<label>Username: </label>' + info.username + '<br/>';
+                HTML += '<label>Email: </label>' + info.email + '<br/>';
+                //aca podrian ir los ultimos 5 post
+            }
+
+            $('.modal-body').html(HTML);
+
+
+        }
+
+
+    });
+
+}
+;
