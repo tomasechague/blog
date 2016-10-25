@@ -12,7 +12,10 @@ try {
     }
     $nombre = $_POST['username'];
     $id = $_POST['id'];
-    UserFactory::editUser($id, $username);
+    $user = User::retrieveBy('id', $id);
+    $user->setUsername($username);
+    $user->save();
+    
 } catch (Exception $e) {
     $result = ['code' => 500, 'message' => "La persona no se pudo modificar. " . $e->getMessage()];
 }

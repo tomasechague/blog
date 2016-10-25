@@ -56,21 +56,11 @@ function cambiarPersona(id) {
         success: function (data) {
 
             alert(data.message);
-            if (data.code == 200) {
-                getUsers();
-
-            }
+            
         }
 
 
     });
-}
-
-function cancelarEdicion(id, name) {
-    $('#' + id).val(name);
-    $('#editbutton-' + id).hide();
-    $('#' + id).prop('disabled', true);
-
 }
 
 function eliminarPersona(id) {
@@ -90,12 +80,6 @@ function eliminarPersona(id) {
 
 
     });
-}
-
-function activarModiPersona(id) {
-    $('#' + id).prop('disabled', false);
-    $('#editbutton-' + id).show();
-
 }
 
 function verPersona(id) {

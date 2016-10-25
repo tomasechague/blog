@@ -7,8 +7,9 @@ try{
         throw new Exception("No hay id definido");
     }
 $id = $_POST['id'];
-UserFactory::deleteUser($id);
-
+$user = User::retrieveBy('id', $id);
+$user->delete();
+$result = ['code'=>200, 'message'=>"La persona se ha borrado"];       
 }catch(Exception $e){
 $result = ['code'=>500, 'message'=>"Hubo un error al borrar la persona: ". $e->getMessage()];       
 }
