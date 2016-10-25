@@ -40,19 +40,21 @@ function saveUser(data) {
         }
     });
 
-} 
+}
 
-function cambiarPersona(id) {
 
-    var username = $('#' + id).val();
+function modifyUser(data) {
+
+  
 
     $.ajax({
         url: "../Controller/Ajax/User/edit.php",
+        dataType: 'text', // what to expect back from the PHP script, if anything
+        cache: false,
+        contentType: false,
+        processData: false,
         type: 'POST',
-        data: {
-            username: username,
-            id: id
-        },
+        data: data,
         success: function (data) {
 
             alert(data.message);
@@ -82,26 +84,27 @@ function eliminarPersona(id) {
     });
 }
 
-function verPersona(id) {
+function getPerson(id,action) {
 
     $.ajax({
-        url: "../Controller/Ajax/User/view.php",
+        url: "../Controller/Ajax/User/get.php",
         type: 'GET',
         data: {
             id: id
         },
         success: function (data) {
-            var info = data.results;
-            console.log(data.results);
+            
             if (data.code == 200) {
-                var HTML = '';
-                //aca faltaria la foto
-                HTML += '<label>Username: </label>' + info.username + '<br/>';
-                HTML += '<label>Email: </label>' + info.email + '<br/>';
-                //aca podrian ir los ultimos 5 post
+                if(action == 'view'){
+                    //implementar segun vista
+                    viewUser(data);
+                }else{
+                    //implementar segun vista
+                    preEditUser(data);
+                }
             }
 
-            $('.modal-body').html(HTML);
+            
 
 
         }

@@ -4,7 +4,7 @@
 </div>
 <?php require_once 'menu.php'; ?> 
 
-<div class="modal" style="display:none"></div>
+<div class="wait-modal" style="display:none"></div>
 <div class="loader" style="display:none"></div>
 <div class="container">
 </div> 

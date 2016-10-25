@@ -12,19 +12,23 @@ class ORM {
     protected $tableName;
     protected $fields;
 
-    public static function retrieveBy($key, $value) {
+    public static function retrieveBy($key, $value, $mode = 'object') {
 
         $class = get_called_class();
         $instance = new $class();
-        $instance->getElementByKeyValue($key, $value);
-        return $instance;
+        $result = $instance->getElementByKeyValue($key, $value, $mode);
+        return $result;
     }
 
-    public function getElementByKeyValue($key, $value) {
+    public function getElementByKeyValue($key, $value, $mode) {
 
         $searchResult = $this->loadByKeyValue($key, $value);
+        if($mode == 'object'){
         $this->setValues($searchResult);
         return $this;
+        }else{
+            return $searchResult;
+        }
     }
 
     public function save() {

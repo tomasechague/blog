@@ -5,7 +5,9 @@
     <strong id="errors"></strong>
 </div>
 </div>
+
 <form class="form-horizontal" id="myform" enctype="multipart/form-data">
+<img src="" height="100" width="100" id="avatar-image"><br/><br/>
     <div class="form-group">
         <label class="control-label col-sm-2" for="avatar-link">Avatar:</label>
         <div class="col-sm-10"> 
@@ -26,29 +28,6 @@
             <input type="email" class="form-control" id="email" placeholder="Enter email">
         </div>
     </div>
-    <div class="form-group"> 
-        <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-default">Agregar</button>
-        </div>
-    </div>
+    
 </form>
 
-
-<script>
-    $(document).ready(function () {
-        $("form#myform").submit(function (event) {
-            event.preventDefault();
-            var username = $("#username").val();
-            var email = $("#email").val();
-            var file = $("#avatar-link").prop('files')[0];
-            var data = new FormData();
-            data.append('archivo', file);
-            data.append('email',email);
-            data.append('username', username);
-            saveUser(data);
-     });
-     
-     
-    });
-
-</script>

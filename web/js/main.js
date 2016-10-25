@@ -1,6 +1,6 @@
 function cambiarVentana(binder, file) {
     $('.container').html("");
-    $('.modal').show();
+    $('.wait-modal').show();
     $('.loader').show();
     setTimeout(function () {
         $.ajax({
@@ -8,7 +8,7 @@ function cambiarVentana(binder, file) {
             url: "../View/" + binder + "/" + file + ".php",
             data: {action: 'test'},
             success: function (response) {
-                $('.modal').hide();
+                $('.wait-modal').hide();
                 $('.loader').hide();
                 $('.container').html(response);
 

@@ -32,16 +32,16 @@ class UserValidator extends Validator {
         if (!$this->validateEmail($anUser->getEmail())) {
             $this->addError('email', 'Email incorrecto');
         }
-        
-        $typesArray =["image/jpeg","image/gif"];
-        if (!$this->validateFileType($file, $typesArray)) {
-            $this->addError('file', 'Tu archivo tiene que ser JPG o GIF. Otros archivos no son permitidos');
+        if ($file) {
+            $typesArray = ["image/jpeg", "image/gif"];
+            if (!$this->validateFileType($file, $typesArray)) {
+                $this->addError('file', 'Tu archivo tiene que ser JPG o GIF. Otros archivos no son permitidos');
+            }
+            $kbSize = 2000000;
+            if (!$this->validateFileSize($file, $kbSize)) {
+                $this->addError('file', 'El archivo es mayor que 20000KB, debes reduzcirlo antes de subirlo');
+            }
         }
-        $kbSize = 2000000;
-        if(!$this->validateFileSize($file, $kbSize)){
-            $this->addError('file', 'El archivo es mayor que 20000KB, debes reduzcirlo antes de subirlo');
-        }
-
         return empty($this->errors);
     }
 

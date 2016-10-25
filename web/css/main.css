@@ -29,7 +29,7 @@ button:hover{
     100% { transform: rotate(360deg); }
 }
 
-.modal {
+.wait-modal {
     display:    none;
     position:   fixed;
     z-index:    0;
