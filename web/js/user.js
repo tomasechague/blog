@@ -49,18 +49,28 @@ function modifyUser(data) {
 
     $.ajax({
         url: "../Controller/Ajax/User/edit.php",
-        dataType: 'text', // what to expect back from the PHP script, if anything
+        //dataType: 'text', // what to expect back from the PHP script, if anything
         cache: false,
         contentType: false,
         processData: false,
         type: 'POST',
         data: data,
         success: function (data) {
-
-            alert(data.message);
-            
+            console.log(data);
+            if (data.code == 200) {
+                $('#alerts').show();
+                $('#alerts').removeClass('alert-danger');
+                $('#alerts').addClass('alert-success');
+                $('strong').text(data.mensaje);
+                $('#email').val('');
+                $('#username').val('');
+            } else {
+                $('#alerts').show();
+                $('#alerts').removeClass('alert-success');
+                $('#alerts').addClass('alert-danger');
+                $('strong#errors').text(data.mensaje);
+            }
         }
-
 
     });
 }
